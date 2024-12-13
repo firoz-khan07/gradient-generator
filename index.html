@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            background-image: linear-gradient(
+                to right top,
+                #051937,
+                #004d7a,
+                #008793,
+                #00bf72,
+                #a8eb12
+            );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+       #myButton{
+        font-size: 18px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  will-change: box-shadow,transform;
+  background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  padding: 0 2em;
+  border-radius: 0.3em;
+  color: #fff;
+  height: 2.6em;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+       }
+
+       #myButton2{
+        font-size: 18px;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  will-change: box-shadow,transform;
+  background: radial-gradient( 100% 100% at 100% 0%, #89E5FF 0%, #5468FF 100% );
+  box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.3em 0.7em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+  padding: 0 2em;
+  border-radius: 0.3em;
+  color: #fff;
+  height: 2.6em;
+  text-shadow: 0 1px 0 rgb(0 0 0 / 40%);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+       }
+
+       
+button:hover {
+  box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px #3c4fe0;
+  transform: translateY(-0.1em);
+}
+
+
+button:active {
+  box-shadow: inset 0px 0.1em 0.6em #3c4fe0;
+  transform: translateY(0em);
+} 
+
+       #btnflex{
+        display: flex;
+        gap: 20px;
+       }
+
+       h2{
+        color: white;
+       }
+
+       .copyCode{
+        color: white;
+       }
+
+  
+        
+    </style>
+</head>
+<body>
+    <section>
+        <div id="btnflex">
+            <button id="myButton">#051937</button>
+            <button id="myButton2">#008793</button>
+        </div>
+        <h2>Copy Your Code Here</h2>
+        <div class="copyCode">
+            background-image:linear-gradient(to right,rgb(92,145,229),rgb(152,63,198));
+        </div>
+    </section>
+    <script>
+        let btn1=document.getElementById("myButton");
+        let btn2=document.getElementById("myButton2");
+        let copyDiv=document.querySelector(".copyCode")
+        let rgb1="#36bdc9";
+        let rgb2="#36c97b";
+        
+        const hexaValues = () =>{
+            let myHexValues = "0123456789abcdef"; 
+            let colors="#";
+            for(let i=0;i<6;i++){
+           colors=colors+myHexValues[Math.floor(Math.random()*16)];
+            }
+            
+              return colors; 
+
+        }
+      
+        const handleButton1=()=>{
+           rgb1=hexaValues()
+           btn1.innerText=rgb1;
+          console.log(rgb1)
+          document.body.style.backgroundImage = 
+          `linear-gradient(to right,${rgb1},${rgb2})`;
+          copyDiv.innerHTML = ` background-image:linear-gradient(to right,${rgb1},${rgb2});`
+
+        }
+
+        const handleButton2=()=>{
+           rgb2=hexaValues()
+           btn2.innerText=rgb2;
+          console.log(rgb2)
+          document.body.style.backgroundImage = 
+          `linear-gradient(to right,${rgb1},${rgb2})`;
+          copyDiv.innerHTML = ` background-image:linear-gradient(to right,${rgb2},${rgb1});`
+        }
+
+
+        btn1.addEventListener("click",handleButton1);
+        btn2.addEventListener("click",handleButton2);
+        copyDiv.addEventListener("click",()=>{
+            navigator.clipboard.writeText(copyDiv.innerText)
+        })
+       
+
+    </script>
+</body>
+</html>
